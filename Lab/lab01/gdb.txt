@@ -1,9 +1,10 @@
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
+1. use run arglist
+2. use break line
+3. use n
+4. use s
+5. use c
+6. use p
+7. use display [/f] [expr]
+8. use display
+9. use quit
+

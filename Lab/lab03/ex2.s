@@ -37,16 +37,16 @@ main:
     sw s3, 12(sp)
     sw ra, 16(sp)
     # END PROLOGUE
-    addi t0, x0, 0
-    addi s0, x0, 0
+    addi t0, x0, 0 # t0 serves as k in .c file
+    addi s0, x0, 0 # s0 serves as sum in .c file
     la s1, source
     la s2, dest
 loop:
-    slli s3, t0, 2
-    add t1, s1, s3
-    lw t2, 0(t1)
+    slli s3, t0, 2 # s3: addr offset, t0: index, s3 = t0 * 4: int has 4 byte
+    add t1, s1, s3 # t1: element addr in source
+    lw t2, 0(t1) # t2: element in source array
     beq t2, x0, exit
-    add a0, x0, t2
+    add a0, x0, t2 # a0: argument of fun
     addi sp, sp, -8
     sw t0, 0(sp)
     sw t2, 4(sp)
@@ -54,8 +54,8 @@ loop:
     lw t0, 0(sp)
     lw t2, 4(sp)
     addi sp, sp, 8
-    add t2, x0, a0
-    add t3, s2, s3
+    add t2, x0, a0 # a0: return of fun; t2 get the value
+    add t3, s2, s3 # t3: element addr in dest array
     sw t2, 0(t3)
     add s0, s0, t2
     addi t0, t0, 1

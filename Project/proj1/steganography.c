@@ -18,21 +18,45 @@
 #include <inttypes.h>
 #include "imageloader.h"
 
-//Determines what color the cell at the given row/col should be. This should not affect Image, and should allocate space for a new Color.
+// Determines what color the cell at the given row/col should be. This should not affect Image, and should allocate space for a new Color.
 Color *evaluateOnePixel(Image *image, int row, int col)
 {
-	//YOUR CODE HERE
+	// YOUR CODE HERE
+	uint8_t b = image->image[row][col].B;
+	Color *new_color = malloc(sizeof(Color));
+	if (b & 1)
+		new_color->R = new_color->G = new_color->B = 255;
+	else
+		new_color->R = new_color->G = new_color->B = 0;
+	return new_color;
 }
 
-//Given an image, creates a new image extracting the LSB of the B channel.
+// Given an image, creates a new image extracting the LSB of the B channel.
 Image *steganography(Image *image)
 {
-	//YOUR CODE HERE
+	// YOUR CODE HERE
+	Image *new_image = malloc(sizeof(Image));
+	new_image->rows = image->rows;
+	new_image->cols = image->cols;
+	new_image->image = malloc(image->rows * sizeof(Color *));
+	for (int i = 0; i < image->rows; i++)
+		new_image->image[i] = malloc(image->cols * sizeof(Color));
+
+	for (int i = 0; i < image->rows; i++)
+		for (int j = 0; j < image->cols; j++)
+		{
+			Color *new_color = evaluateOnePixel(image, i, j);
+			new_image->image[i][j].R = new_color->R;
+			new_image->image[i][j].G = new_color->G;
+			new_image->image[i][j].B = new_color->B;
+			free(new_color);
+		}
+	return new_image;
 }
 
 /*
-Loads a file of ppm P3 format from a file, and prints to stdout (e.g. with printf) a new image, 
-where each pixel is black if the LSB of the B channel is 0, 
+Loads a file of ppm P3 format from a file, and prints to stdout (e.g. with printf) a new image,
+where each pixel is black if the LSB of the B channel is 0,
 and white if the LSB of the B channel is 1.
 
 argc stores the number of arguments.
@@ -45,5 +69,15 @@ Make sure to free all memory before returning!
 */
 int main(int argc, char **argv)
 {
-	//YOUR CODE HERE
+	if (argc != 2)
+		exit(-1);
+	char *filename = argv[1];
+	Image *image = readData(filename);
+	if (image == NULL)
+		exit(-1);
+	Image *hide_image = steganography(image);
+	writeData(hide_image);
+	freeImage(image);
+	freeImage(hide_image);
+	return 0;
 }

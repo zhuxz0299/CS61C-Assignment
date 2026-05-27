@@ -444,6 +444,10 @@ end TCL_Generic;
       <a name="facing" val="east"/>
       <a name="label" val="clk"/>
     </comp>
+    <comp lib="0" loc="(140,800)" name="Constant">
+      <a name="value" val="0x0"/>
+      <a name="width" val="32"/>
+    </comp>
     <comp lib="0" loc="(140,930)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="clk"/>
@@ -654,10 +658,6 @@ end TCL_Generic;
     <comp lib="0" loc="(170,2020)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="write_en_28"/>
-    </comp>
-    <comp lib="0" loc="(170,800)" name="Pin">
-      <a name="label" val="Zero_32"/>
-      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(170,880)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -1653,6 +1653,7 @@ end TCL_Generic;
     <wire from="(140,1740)" to="(180,1740)"/>
     <wire from="(140,1910)" to="(180,1910)"/>
     <wire from="(140,2070)" to="(180,2070)"/>
+    <wire from="(140,800)" to="(210,800)"/>
     <wire from="(140,930)" to="(180,930)"/>
     <wire from="(1580,1830)" to="(1650,1830)"/>
     <wire from="(1580,320)" to="(1580,540)"/>
@@ -1731,7 +1732,6 @@ end TCL_Generic;
     <wire from="(170,1860)" to="(250,1860)"/>
     <wire from="(170,1970)" to="(210,1970)"/>
     <wire from="(170,2020)" to="(250,2020)"/>
-    <wire from="(170,800)" to="(210,800)"/>
     <wire from="(170,880)" to="(250,880)"/>
     <wire from="(170,990)" to="(210,990)"/>
     <wire from="(1720,700)" to="(1810,700)"/>

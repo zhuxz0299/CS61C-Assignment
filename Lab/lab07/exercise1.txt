@@ -1,24 +1,24 @@
 Scenario 1
-    1.
-    2.
-    3.
+    1. Step Size, Cache Size
+    2. 0.0
+    3. Step Size, 1
 
 Scenario 2
-    1.
-    2.
-    3.
+    1. 2
+    2. MHHH
+    3. 1.0
 
 Scenario 3
-    1.
-    2.
-    3.
-    4.
-    5.
+    1. L1 0.5, L2 0.0, Overall 0.5
+    2. 32 of L1 accesses, 16 of L1 misses
+    3. 16
+    4. Rep Count
+    5. =, =, +, =
 
 --- lines below are ignored by the AG ---
 
-Checkoff Question 1:
-Checkoff Question 2:
-Checkoff Question 3:
-Checkoff Question 4:
+Checkoff Question 1: Because different memory address mapped to the same block in cache each step.
+Checkoff Question 2: Step Size and Array Size.
+Checkoff Question 3: Hit rate is 0.75. The first miss is compulsory miss when reading, then the word is written, getting a hit. The next element accessed in the program also in the block. 
+Checkoff Question 4: All the elements in array are loaded to the cache and no eviction occurs.
 Checkoff Question 5:
